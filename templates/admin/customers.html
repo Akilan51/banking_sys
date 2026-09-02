@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Customers</h2>
+
+<form method="get" class="mb-3">
+    <input
+        type="text"
+        name="q"
+        class="form-control"
+        placeholder="Search Customer"
+        value="{{ request.GET.q }}"
+    >
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Account</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for c in customers %}
+        <tr>
+            <td>
+                {{ c.user.first_name }} {{ c.user.last_name }}
+            </td>
+
+            <td>
+                {{ c.account.account_number }}
+            </td>
+
+            <td>
+                {{ c.account.status }}
+            </td>
+
+            <td>
+                {% if c.account.status == "Active" %}
+                    <a href="{% url 'freeze_account' c.account.id %}" class="btn btn-danger">
+                        Freeze
+                    </a>
+                {% else %}
+                    <a href="{% url 'unfreeze_account' c.account.id %}" class="btn btn-success">
+                        Activate
+                    </a>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="text-center">
+                No customers found.
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

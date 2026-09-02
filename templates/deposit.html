@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/deposit.css' %}">
+
+<div class="deposit-page">
+
+    <div class="deposit-card">
+
+        <h2>Deposit Money</h2>
+
+        <p class="subtitle">
+            Add money securely to your bank account.
+        </p>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="deposit-btn">
+                Deposit Money
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

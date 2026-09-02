@@ -1,0 +1,920 @@
+
+/* =========================================================
+   MY LOANS
+   Premium Animated Banking UI
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   PAGE
+   --------------------------------------------------------- */
+
+.my-loans-page {
+    min-height: 85vh;
+
+    padding: 40px 15px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 8% 15%,
+            rgba(13, 110, 253, 0.10),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 92% 85%,
+            rgba(25, 135, 84, 0.09),
+            transparent 27%
+        ),
+        #f5f8fc;
+}
+
+
+/* ---------------------------------------------------------
+   FLOATING BACKGROUND
+   --------------------------------------------------------- */
+
+.my-loans-page::before,
+.my-loans-page::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(3px);
+}
+
+
+.my-loans-page::before {
+
+    width: 280px;
+    height: 280px;
+
+    top: -130px;
+    left: -100px;
+
+    background:
+        rgba(13, 110, 253, 0.09);
+
+    animation:
+        loanOrbOne 8s ease-in-out infinite;
+}
+
+
+.my-loans-page::after {
+
+    width: 330px;
+    height: 330px;
+
+    right: -130px;
+    bottom: -150px;
+
+    background:
+        rgba(25, 135, 84, 0.08);
+
+    animation:
+        loanOrbTwo 10s ease-in-out infinite;
+}
+
+
+/* ---------------------------------------------------------
+   PAGE HEADER
+   --------------------------------------------------------- */
+
+.my-loans-header {
+
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 30px;
+
+    opacity: 0;
+
+    animation:
+        headerEnter 0.8s
+        cubic-bezier(.16, 1, .3, 1)
+        forwards;
+}
+
+
+.my-loans-header h2 {
+
+    margin: 0;
+
+    color: #172b4d;
+
+    font-size: 30px;
+
+    font-weight: 750;
+
+    letter-spacing: -0.6px;
+}
+
+
+/* Apply loan button */
+
+.my-loans-header .btn {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 11px 20px;
+
+    font-weight: 600;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0759d7,
+            #1769e0,
+            #512da8
+        );
+
+    background-size: 200% 200%;
+
+    box-shadow:
+        0 8px 20px rgba(13, 110, 253, 0.20);
+
+    animation:
+        buttonGradient 5s ease infinite;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.my-loans-header .btn:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.02);
+
+    box-shadow:
+        0 14px 30px rgba(13, 110, 253, 0.30);
+}
+
+
+/* Button shine */
+
+.my-loans-header .btn::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    transform: skewX(-25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.3),
+            transparent
+        );
+
+    transition: left 0.6s ease;
+}
+
+
+.my-loans-header .btn:hover::before {
+    left: 140%;
+}
+
+
+/* ---------------------------------------------------------
+   LOAN GRID
+   --------------------------------------------------------- */
+
+.my-loans-grid {
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ---------------------------------------------------------
+   LOAN CARD
+   --------------------------------------------------------- */
+
+.loan-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 100%;
+
+    border: 1px solid rgba(30, 60, 100, 0.08) !important;
+
+    border-radius: 20px !important;
+
+    background:
+        rgba(255,255,255,0.96);
+
+    box-shadow:
+        0 12px 35px rgba(30, 55, 90, 0.10) !important;
+
+    opacity: 0;
+
+    transform:
+        translateY(40px)
+        scale(0.95);
+
+    animation:
+        loanCardEnter 0.7s
+        cubic-bezier(.16, 1, .3, 1)
+        forwards;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* Card top accent */
+
+.loan-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0759d7,
+            #1769e0,
+            #00a884
+        );
+
+    background-size: 200% 100%;
+
+    animation:
+        accentMove 4s linear infinite;
+}
+
+
+/* Card shine */
+
+.loan-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: -100%;
+    left: -100%;
+
+    width: 60%;
+    height: 300%;
+
+    transform: rotate(25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.45),
+            transparent
+        );
+
+    opacity: 0;
+
+    transition: opacity 0.3s ease;
+}
+
+
+/* Hover */
+
+.loan-card:hover {
+
+    transform:
+        translateY(-10px)
+        scale(1.015);
+
+    border-color:
+        rgba(13, 110, 253, 0.16) !important;
+
+    box-shadow:
+        0 25px 55px rgba(30, 55, 90, 0.16) !important;
+}
+
+
+.loan-card:hover::after {
+
+    opacity: 1;
+
+    animation:
+        cardShine 0.9s ease;
+}
+
+
+/* ---------------------------------------------------------
+   CARD BODY
+   --------------------------------------------------------- */
+
+.loan-card .card-body {
+
+    padding: 26px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* ---------------------------------------------------------
+   LOAN TITLE
+   --------------------------------------------------------- */
+
+.loan-card .card-title {
+
+    margin-bottom: 15px;
+
+    color: #1e293b;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.loan-card:hover .card-title {
+
+    color: #0759d7;
+
+    transform:
+        translateX(4px);
+}
+
+
+/* ---------------------------------------------------------
+   DIVIDER
+   --------------------------------------------------------- */
+
+.loan-card hr {
+
+    margin: 15px 0 20px;
+
+    border: 0;
+
+    border-top:
+        1px solid #e9eef5;
+
+    opacity: 1;
+}
+
+
+/* ---------------------------------------------------------
+   LOAN INFORMATION
+   --------------------------------------------------------- */
+
+.loan-card p {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 13px;
+
+    color: #667085;
+
+    font-size: 14px;
+
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease;
+}
+
+
+.loan-card p strong {
+
+    color: #344054;
+
+    font-weight: 600;
+}
+
+
+.loan-card:hover p {
+
+    transform:
+        translateX(3px);
+}
+
+
+/* Highlight important amounts */
+
+.loan-card p:nth-of-type(1) {
+
+    color: #0759d7;
+
+    font-size: 15px;
+}
+
+
+.loan-card p:nth-of-type(4) {
+
+    color: #087443;
+
+    font-weight: 650;
+
+    font-size: 15px;
+}
+
+
+/* ---------------------------------------------------------
+   STATUS BADGES
+   --------------------------------------------------------- */
+
+.loan-card .badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* Pending */
+
+.loan-card .bg-warning {
+
+    background: #fff4d6 !important;
+
+    color: #8a5a00 !important;
+
+    animation:
+        pendingPulse 2.5s ease-in-out infinite;
+}
+
+
+/* Approved */
+
+.loan-card .bg-success {
+
+    background: #e4f7ee !important;
+
+    color: #087443 !important;
+}
+
+
+/* Completed */
+
+.loan-card .bg-primary {
+
+    background: #e7efff !important;
+
+    color: #175cd3 !important;
+}
+
+
+/* Other */
+
+.loan-card .bg-secondary {
+
+    background: #edf0f3 !important;
+
+    color: #475467 !important;
+}
+
+
+.loan-card:hover .badge {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 6px 14px rgba(0,0,0,0.08);
+}
+
+
+/* ---------------------------------------------------------
+   EMI SECTION
+   --------------------------------------------------------- */
+
+.loan-card .mt-3 {
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid #edf1f6;
+
+    animation:
+        emiAppear 0.7s ease 0.4s both;
+}
+
+
+/* ---------------------------------------------------------
+   PAY EMI BUTTON
+   --------------------------------------------------------- */
+
+.loan-card .btn-success {
+
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+
+    padding: 10px 16px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-weight: 650;
+
+    background:
+        linear-gradient(
+            135deg,
+            #087443,
+            #00a884
+        );
+
+    box-shadow:
+        0 7px 18px rgba(8,116,67,0.18);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.loan-card .btn-success:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(8,116,67,0.28);
+}
+
+
+.loan-card .btn-success::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -110%;
+
+    width: 65%;
+    height: 100%;
+
+    transform: skewX(-25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.3),
+            transparent
+        );
+
+    transition:
+        left 0.6s ease;
+}
+
+
+.loan-card .btn-success:hover::before {
+    left: 140%;
+}
+
+
+/* ---------------------------------------------------------
+   NO LOANS MESSAGE
+   --------------------------------------------------------- */
+
+.my-loans-empty {
+
+    position: relative;
+    z-index: 2;
+
+    padding: 45px 25px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #edf5ff,
+            #eefbf6
+        );
+
+    color: #344054;
+
+    box-shadow:
+        0 12px 35px rgba(30,55,90,0.08);
+
+    animation:
+        emptyEnter 0.7s ease both;
+}
+
+
+/* ---------------------------------------------------------
+   STAGGERED CARD ANIMATIONS
+   --------------------------------------------------------- */
+
+.loan-card:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.loan-card:nth-child(2) {
+    animation-delay: 0.28s;
+}
+
+.loan-card:nth-child(3) {
+    animation-delay: 0.41s;
+}
+
+.loan-card:nth-child(4) {
+    animation-delay: 0.54s;
+}
+
+.loan-card:nth-child(5) {
+    animation-delay: 0.67s;
+}
+
+.loan-card:nth-child(6) {
+    animation-delay: 0.80s;
+}
+
+.loan-card:nth-child(7) {
+    animation-delay: 0.93s;
+}
+
+.loan-card:nth-child(8) {
+    animation-delay: 1.06s;
+}
+
+.loan-card:nth-child(9) {
+    animation-delay: 1.19s;
+}
+
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes headerEnter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes loanCardEnter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(40px)
+            scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes buttonGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+@keyframes accentMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+
+@keyframes cardShine {
+
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 160%;
+    }
+}
+
+
+@keyframes pendingPulse {
+
+    0%, 100% {
+        box-shadow:
+            0 0 0 0 rgba(255,193,7,0.18);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 7px rgba(255,193,7,0);
+    }
+}
+
+
+@keyframes emiAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes emptyEnter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes loanOrbOne {
+
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(75px, 60px)
+            scale(1.15);
+    }
+}
+
+
+@keyframes loanOrbTwo {
+
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-70px, -60px)
+            scale(1.12);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .my-loans-page {
+        padding: 25px 12px;
+    }
+
+    .my-loans-header {
+
+        align-items: stretch !important;
+
+        gap: 15px;
+
+        flex-direction: column;
+    }
+
+    .my-loans-header h2 {
+        font-size: 25px;
+    }
+
+    .my-loans-header .btn {
+        width: 100%;
+    }
+
+    .loan-card .card-body {
+        padding: 22px;
+    }
+
+    .loan-card p {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}

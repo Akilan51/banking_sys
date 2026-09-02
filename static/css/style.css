@@ -1,0 +1,885 @@
+
+/* =========================================================
+   BANKING MANAGEMENT SYSTEM
+   3D ANIMATION STYLE
+   File: static/css/style.css
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(0, 123, 255, 0.12), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(111, 66, 193, 0.12), transparent 25%),
+        linear-gradient(135deg, #eef4ff, #f8f9fa);
+
+    color: #1f2937;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    position: relative;
+    z-index: 1000;
+
+    background: linear-gradient(
+        135deg,
+        #07152e,
+        #0b2854,
+        #123d73
+    ) !important;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.25),
+        0 2px 0 rgba(255, 255, 255, 0.08) inset;
+
+    animation: navbarDrop 0.9s ease-out;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+
+    transition:
+        transform 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: translateZ(20px) scale(1.04);
+
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.7),
+        0 0 25px rgba(0, 174, 255, 0.6);
+}
+
+.navbar .btn {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.navbar .btn:hover {
+    transform: translateY(-3px) scale(1.04);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+
+.hero-section {
+    position: relative;
+
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    overflow: hidden;
+
+    perspective: 1200px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(4, 30, 66, 0.97),
+            rgba(10, 74, 132, 0.95),
+            rgba(35, 110, 190, 0.9)
+        );
+}
+
+
+/* Animated background glow */
+
+.hero-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 195, 255, 0.28),
+            transparent 65%
+        );
+
+    top: -250px;
+    left: -150px;
+
+    animation: floatingGlow 8s ease-in-out infinite;
+}
+
+
+/* Second floating glow */
+
+.hero-section::after {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(153, 102, 255, 0.25),
+            transparent 65%
+        );
+
+    right: -180px;
+    bottom: -220px;
+
+    animation: floatingGlowReverse 10s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+
+    max-width: 900px;
+
+    padding: 45px;
+
+    color: white;
+
+    transform-style: preserve-3d;
+
+    animation:
+        heroEntrance 1.2s cubic-bezier(.17,.67,.3,1.2),
+        heroFloat 5s ease-in-out 1.3s infinite;
+}
+
+
+/* 3D glass panel */
+
+.hero-content::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.14),
+            rgba(255, 255, 255, 0.03)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+    backdrop-filter: blur(12px);
+
+    transform: translateZ(-20px);
+
+    z-index: -1;
+}
+
+
+.hero-content h1 {
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.2),
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    animation: title3D 1.5s ease-out;
+}
+
+
+.hero-content p {
+    max-width: 720px;
+
+    margin: 0 auto 30px;
+
+    font-size: 1.1rem;
+
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    animation: fadeUp 1.2s ease-out 0.3s both;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+   ========================================================= */
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    animation: fadeUp 1.2s ease-out 0.6s both;
+}
+
+.hero-buttons .btn {
+    position: relative;
+
+    padding: 12px 28px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    border: none;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.hero-buttons .btn::after {
+    content: "";
+
+    position: absolute;
+
+    left: 8px;
+    right: 8px;
+    bottom: -7px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    filter: blur(5px);
+
+    z-index: -1;
+
+    transition: 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+    transform:
+        translateY(-8px)
+        rotateX(8deg)
+        scale(1.05);
+
+    box-shadow:
+        0 18px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hero-buttons .btn:hover::after {
+    opacity: 0.5;
+
+    transform: scale(1.2);
+}
+
+
+/* =========================================================
+   FEATURES SECTION
+   ========================================================= */
+
+.features {
+    position: relative;
+
+    padding: 90px 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f7faff,
+            #ffffff
+        );
+
+    perspective: 1200px;
+}
+
+.features h2 {
+    text-align: center;
+
+    font-size: 2.5rem;
+
+    font-weight: 800;
+
+    margin-bottom: 55px;
+
+    color: #0b2854;
+
+    animation: fadeUp 1s ease-out;
+}
+
+.features h2::after {
+    content: "";
+
+    display: block;
+
+    width: 80px;
+    height: 4px;
+
+    margin: 15px auto 0;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #0d6efd,
+        #6610f2
+    );
+
+    animation: lineGrow 1s ease-out;
+}
+
+
+/* =========================================================
+   FEATURE CARDS
+   ========================================================= */
+
+.feature-card {
+    position: relative;
+
+    height: 100%;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #eef4ff
+        );
+
+    border: 1px solid rgba(13, 110, 253, 0.08);
+
+    box-shadow:
+        0 12px 30px rgba(13, 50, 100, 0.12);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.5s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.5s ease;
+
+    overflow: hidden;
+
+    animation: cardEntrance 0.9s ease-out both;
+}
+
+
+/* Different entrance delays */
+
+.feature-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.feature-card:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.feature-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.feature-card:nth-child(4) {
+    animation-delay: 0.55s;
+}
+
+
+/* Shine effect */
+
+.feature-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 500px;
+
+    top: -150px;
+    left: -250px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.65),
+            transparent
+        );
+
+    transform: rotate(25deg);
+
+    transition: 0.7s ease;
+}
+
+.feature-card:hover::before {
+    left: 120%;
+}
+
+
+/* Bottom glow */
+
+.feature-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 80%;
+    height: 4px;
+
+    bottom: 0;
+    left: 10%;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #0d6efd,
+            transparent
+        );
+
+    opacity: 0;
+
+    transition: opacity 0.4s ease;
+}
+
+
+.feature-card:hover {
+    transform:
+        translateY(-15px)
+        rotateX(5deg)
+        rotateY(-5deg)
+        scale(1.025);
+
+    box-shadow:
+        0 30px 60px rgba(13, 110, 253, 0.22),
+        0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+.feature-card:hover::after {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   FEATURE ICON
+   ========================================================= */
+
+.feature-icon {
+    width: 85px;
+    height: 85px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 24px;
+
+    font-size: 42px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd,
+            #6610f2
+        );
+
+    color: white;
+
+    box-shadow:
+        0 12px 25px rgba(13, 110, 253, 0.3);
+
+    transform:
+        translateZ(35px);
+
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+
+.feature-card:hover .feature-icon {
+    transform:
+        translateZ(60px)
+        rotateY(360deg)
+        scale(1.12);
+
+    box-shadow:
+        0 20px 40px rgba(13, 110, 253, 0.4);
+}
+
+
+/* =========================================================
+   FEATURE TEXT
+   ========================================================= */
+
+.feature-card h4 {
+    font-weight: 750;
+
+    margin-bottom: 15px;
+
+    color: #12345b;
+
+    transform: translateZ(25px);
+}
+
+.feature-card p {
+    line-height: 1.7;
+
+    color: #667085;
+
+    transform: translateZ(15px);
+}
+
+
+/* =========================================================
+   SERVICE LINKS
+   ========================================================= */
+
+.service-link {
+    color: #596579;
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+.service-link:hover {
+    color: #0d6efd;
+
+    text-shadow:
+        0 0 10px rgba(13, 110, 253, 0.25);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    position: relative;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    background:
+        linear-gradient(
+            135deg,
+            #07152e,
+            #0b2854,
+            #123d73
+        );
+
+    box-shadow:
+        0 -10px 30px rgba(0, 0, 0, 0.12);
+
+    animation: footerReveal 1s ease-out;
+}
+
+
+/* =========================================================
+   GENERAL BUTTON 3D EFFECT
+   ========================================================= */
+
+.btn {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform:
+        translateY(1px)
+        scale(0.98);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes navbarDrop {
+
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes heroEntrance {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(80px)
+            rotateX(20deg)
+            scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            rotateX(0)
+            scale(1);
+    }
+}
+
+
+@keyframes heroFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+@keyframes title3D {
+
+    from {
+        opacity: 0;
+        transform:
+            translateZ(-100px)
+            rotateX(35deg);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateZ(0)
+            rotateX(0);
+    }
+}
+
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes cardEntrance {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(70px)
+            rotateX(20deg)
+            scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            rotateX(0)
+            scale(1);
+    }
+}
+
+
+@keyframes floatingGlow {
+
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(100px, 80px)
+            scale(1.2);
+    }
+}
+
+
+@keyframes floatingGlowReverse {
+
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-80px, -70px)
+            scale(1.15);
+    }
+}
+
+
+@keyframes lineGrow {
+
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 80px;
+        opacity: 1;
+    }
+}
+
+
+@keyframes footerReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero-section {
+        min-height: 500px;
+
+        padding: 60px 15px;
+    }
+
+    .hero-content {
+        padding: 30px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.3rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .features {
+        padding: 60px 15px;
+    }
+
+    .features h2 {
+        font-size: 2rem;
+    }
+
+    .feature-card {
+        padding: 30px 20px;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+}

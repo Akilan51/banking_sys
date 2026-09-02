@@ -1,0 +1,315 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Banking Management System</title>
+
+
+    <!-- =========================================
+         BOOTSTRAP
+         ========================================= -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+
+    <!-- =========================================
+         HOME CSS
+         ========================================= -->
+
+    <link rel="stylesheet"
+          href="{% static 'css/home.css' %}">
+
+
+    <!-- =========================================
+         ANIMATION / STYLE CSS
+         ========================================= -->
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     NAVBAR
+     ========================================= -->
+
+<nav class="navbar navbar-dark bg-dark">
+
+    <div class="container">
+
+        <a class="navbar-brand"
+           href="{% url 'home' %}">
+            🏦 Banking System
+        </a>
+
+
+        <div>
+
+            {% if user.is_authenticated %}
+
+                <a href="{% url 'dashboard' %}"
+                   class="btn btn-outline-light me-2">
+                    Dashboard
+                </a>
+
+                <a href="{% url 'logout' %}"
+                   class="btn btn-danger">
+                    Logout
+                </a>
+
+            {% else %}
+
+                <a href="{% url 'login' %}"
+                   class="btn btn-outline-light me-2">
+                    Login
+                </a>
+
+                <a href="{% url 'register' %}"
+                   class="btn btn-primary">
+                    Register
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================
+     HERO SECTION
+     ========================================= -->
+
+<section class="hero-section">
+
+    <div class="hero-content">
+
+        <h1>
+            Welcome to Banking Management System
+        </h1>
+
+
+        <p>
+            Manage your account, transfer money,
+            request deposits and withdrawals,
+            apply for loans and view your transactions
+            securely in one place.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            {% if user.is_authenticated %}
+
+                <a href="{% url 'dashboard' %}"
+                   class="btn btn-light">
+                    Go to Dashboard
+                </a>
+
+            {% else %}
+
+                <a href="{% url 'login' %}"
+                   class="btn btn-light">
+                    Login
+                </a>
+
+                <a href="{% url 'register' %}"
+                   class="btn btn-warning">
+                    Create Account
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     BANKING SERVICES
+     ========================================= -->
+
+
+<section class="features">
+
+    <div class="container">
+
+        <h2>Banking Services</h2>
+
+        <div class="row g-4">
+
+            <!-- =========================
+                 TRANSFER
+                 ========================= -->
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        💰
+                    </div>
+
+                    <h4>
+                        Easy Transfers
+                    </h4>
+
+                    <p>
+                        <a href="{% url 'transfer' %}"
+                           class="service-link">
+
+                            Transfer money securely
+                            between bank accounts.
+
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 DEPOSIT & WITHDRAWAL
+                 ========================= -->
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🏦
+                    </div>
+
+                    <h4>
+                        Deposits & Withdrawals
+                    </h4>
+
+                    <p>
+                        <a href="{% url 'deposit' %}"
+                           class="service-link">
+
+                            Submit deposit and
+                            withdrawal requests.
+
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 LOAN
+                 ========================= -->
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        💳
+                    </div>
+
+                    <h4>
+                        Loans
+                    </h4>
+
+                    <p>
+                        <a href="{% url 'apply_loan' %}"
+                           class="service-link">
+
+                            Apply for loans and
+                            manage EMI payments.
+
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 TRANSACTION HISTORY
+                 ========================= -->
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <h4>
+                        Transaction History
+                    </h4>
+
+                    <p>
+                        <a href="{% url 'history' %}"
+                           class="service-link">
+
+                            View your deposits,
+                            withdrawals and transfers.
+
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+```
+
+
+
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+
+<footer>
+
+    <p class="mb-0">
+        © 2026 Banking Management System
+    </p>
+
+</footer>
+
+
+<!-- =========================================
+     BOOTSTRAP JAVASCRIPT
+     ========================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,473 @@
+
+/* =========================================
+   CREATE ACCOUNT - UNIQUE ANIMATION
+   ========================================= */
+
+.account-page {
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(13, 110, 253, 0.12), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(111, 66, 193, 0.14), transparent 30%);
+}
+
+
+/* =========================================
+   CARD
+   ========================================= */
+
+.account-card {
+    width: 100%;
+    max-width: 560px;
+    padding: 42px;
+
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(13, 110, 253, 0.15);
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.12);
+
+    position: relative;
+    overflow: hidden;
+
+    animation: cardEnter 0.8s ease-out both;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* Animated light across card */
+
+.account-card::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #0d6efd,
+        #6f42c1,
+        transparent
+    );
+
+    animation: lightSweep 3s ease-in-out infinite;
+}
+
+
+.account-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 28px 70px rgba(13, 110, 253, 0.18);
+}
+
+
+/* =========================================
+   BANK ICON
+   ========================================= */
+
+.account-icon {
+    width: 78px;
+    height: 78px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 38px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #0d6efd,
+        #6f42c1
+    );
+
+    box-shadow:
+        0 10px 30px rgba(13, 110, 253, 0.3);
+
+    animation:
+        iconFloat 3s ease-in-out infinite,
+        iconAppear 0.8s ease-out both;
+}
+
+
+/* =========================================
+   TITLE
+   ========================================= */
+
+.account-card h2 {
+    text-align: center;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+    color: #172033;
+
+    animation: fadeUp 0.8s ease-out 0.15s both;
+}
+
+
+.account-subtitle {
+    text-align: center;
+
+    color: #6c757d;
+
+    margin-bottom: 30px;
+
+    animation: fadeUp 0.8s ease-out 0.25s both;
+}
+
+
+/* =========================================
+   FORM
+   ========================================= */
+
+.account-form p {
+    margin-bottom: 20px;
+
+    animation: fieldAppear 0.6s ease-out both;
+}
+
+
+.account-form p:nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+.account-form p:nth-child(3) {
+    animation-delay: 0.16s;
+}
+
+.account-form p:nth-child(4) {
+    animation-delay: 0.24s;
+}
+
+.account-form p:nth-child(5) {
+    animation-delay: 0.32s;
+}
+
+
+.account-form label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: 600;
+
+    color: #343a40;
+}
+
+
+/* Django generated inputs */
+
+.account-form input,
+.account-form select,
+.account-form textarea {
+    width: 100%;
+
+    padding: 12px 15px;
+
+    border: 2px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    background: #f8f9fa;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.account-form input:hover,
+.account-form select:hover,
+.account-form textarea:hover {
+    border-color: #b6c9ed;
+
+    background: #ffffff;
+}
+
+
+.account-form input:focus,
+.account-form select:focus,
+.account-form textarea:focus {
+    border-color: #0d6efd;
+
+    background: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 0 4px rgba(13, 110, 253, 0.10),
+        0 8px 20px rgba(13, 110, 253, 0.08);
+}
+
+
+/* =========================================
+   CREATE BUTTON
+   ========================================= */
+
+.create-account-btn {
+    width: 100%;
+
+    border: none;
+
+    padding: 14px 20px;
+
+    margin-top: 10px;
+
+    border-radius: 13px;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        135deg,
+        #0d6efd,
+        #6f42c1
+    );
+
+    box-shadow:
+        0 10px 25px rgba(13, 110, 253, 0.25);
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.create-account-btn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
+}
+
+
+.create-account-btn:hover::before {
+    left: 130%;
+}
+
+
+.create-account-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(13, 110, 253, 0.35);
+}
+
+
+.create-account-btn:active {
+    transform: scale(0.97);
+}
+
+
+.create-account-btn span {
+    display: inline-block;
+
+    margin-right: 6px;
+
+    transition: transform 0.3s ease;
+}
+
+
+.create-account-btn:hover span {
+    transform: rotate(-8deg) scale(1.15);
+}
+
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes cardEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(45px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+@keyframes iconAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.5) rotate(-20deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+
+}
+
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+
+}
+
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes fieldAppear {
+
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+@keyframes lightSweep {
+
+    0% {
+        left: -120%;
+    }
+
+    50% {
+        left: 120%;
+    }
+
+    100% {
+        left: 120%;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 576px) {
+
+    .account-page {
+        padding: 25px 12px;
+    }
+
+    .account-card {
+        padding: 28px 20px;
+        border-radius: 18px;
+    }
+
+    .account-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 30px;
+    }
+
+    .account-card h2 {
+        font-size: 24px;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .account-card,
+    .account-icon,
+    .account-card h2,
+    .account-subtitle,
+    .account-form p,
+    .account-card::before {
+        animation: none;
+    }
+
+    .account-card,
+    .account-form input,
+    .account-form select,
+    .account-form textarea,
+    .create-account-btn {
+        transition: none;
+    }
+
+}

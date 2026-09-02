@@ -1,0 +1,160 @@
+```html
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+My Loans
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{% static 'css/loans.css' %}">
+
+<div class="my-loans-page">
+
+    <div class="my-loans-header d-flex justify-content-between align-items-center">
+
+        <h2>
+            💳 My Loans
+        </h2>
+
+        <a href="{% url 'apply_loan' %}"
+           class="btn btn-primary">
+
+            Apply for New Loan
+
+        </a>
+
+    </div>
+
+
+    {% if loans %}
+
+        <div class="row g-4 my-loans-grid">
+
+            {% for loan in loans %}
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card loan-card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                Loan #{{ loan.id }}
+                            </h5>
+
+                            <hr>
+
+                            <p>
+                                <strong>Amount:</strong>
+                                <span>₹{{ loan.amount }}</span>
+                            </p>
+
+                            <p>
+                                <strong>Interest:</strong>
+                                <span>{{ loan.interest }}%</span>
+                            </p>
+
+                            <p>
+                                <strong>Duration:</strong>
+                                <span>{{ loan.years }} years</span>
+                            </p>
+
+                            <p>
+                                <strong>EMI:</strong>
+                                <span>₹{{ loan.emi }}</span>
+                            </p>
+
+                            <p>
+                                <strong>Remaining:</strong>
+                                <span>₹{{ loan.remaining_amount }}</span>
+                            </p>
+
+
+                            {% if loan.status == "Pending" %}
+
+                                <span class="badge bg-warning text-dark">
+                                    Pending Approval
+                                </span>
+
+                            {% elif loan.status == "Approved" %}
+
+                                <span class="badge bg-success">
+                                    Approved
+                                </span>
+
+                            {% elif loan.status == "Completed" %}
+
+                                <span class="badge bg-primary">
+                                    Completed
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-secondary">
+                                    {{ loan.status }}
+                                </span>
+
+                            {% endif %}
+
+
+                            {% if loan.status == "Approved" %}
+
+                                <div class="mt-3">
+
+                                    <a href="{% url 'pay_emi' loan.id %}"
+                                       class="btn btn-success btn-sm">
+
+                                        Pay EMI
+
+                                    </a>
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+
+    {% else %}
+
+        <div class="my-loans-empty text-center">
+
+            <div style="font-size: 55px;">
+                💳
+            </div>
+
+            <h4 class="mt-3">
+                No Loans Yet
+            </h4>
+
+            <p class="text-muted">
+                You don't have any loans yet.
+            </p>
+
+            <a href="{% url 'apply_loan' %}"
+               class="btn btn-primary">
+
+                Apply for a Loan
+
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
+```

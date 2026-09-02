@@ -1,0 +1,135 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Transaction Statement
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{% static 'css/statement.css' %}">
+
+<div class="statement-page">
+
+    {% if account %}
+
+        <div class="statement-card">
+
+            <div class="statement-header">
+                <div class="statement-icon">📊</div>
+
+                <div>
+                    <h2>Transaction Statement</h2>
+                    <p>Recent account transactions</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+
+                <table class="statement-table">
+
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Transaction Type</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for t in transactions %}
+
+                            <tr>
+
+                                <td>
+                                    {{ t.date|date:"d M Y, h:i A" }}
+                                </td>
+
+                                <td>
+                                    <span class="transaction-type">
+                                        {{ t.transaction_type }}
+                                    </span>
+                                </td>
+
+                                <td class="amount">
+                                    ₹{{ t.amount }}
+                                </td>
+
+                                <td>
+
+                                    {% if t.status == "Success" %}
+                                        <span class="status success">
+                                            {{ t.status }}
+                                        </span>
+
+                                    {% elif t.status == "Pending" %}
+                                        <span class="status pending">
+                                            {{ t.status }}
+                                        </span>
+
+                                    {% elif t.status == "Failed" %}
+                                        <span class="status failed">
+                                            {{ t.status }}
+                                        </span>
+
+                                    {% else %}
+                                        <span class="status">
+                                            {{ t.status }}
+                                        </span>
+                                    {% endif %}
+
+                                </td>
+
+                            </tr>
+
+                        {% empty %}
+
+                            <tr>
+                                <td colspan="4" class="empty-message">
+                                    📭 No transactions found.
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    {% else %}
+
+        <div class="no-account-card">
+
+            <div class="no-account-icon">
+                🏦
+            </div>
+
+            <h2>Create Your Account</h2>
+
+            <p>
+                You need an account before viewing your transaction statement.
+            </p>
+
+            <a href="{% url 'create_account' %}"
+               class="create-account-btn">
+
+                Create Account
+
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

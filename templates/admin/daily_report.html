@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+```
+<h2 class="mb-4">Daily Report</h2>
+
+<div class="mb-3">
+    <a href="{% url 'daily_report' %}" class="btn btn-primary">
+        Daily Report
+    </a>
+
+    <a href="{% url 'monthly_report' %}" class="btn btn-success">
+        Monthly Report
+    </a>
+
+    <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">
+        Admin Dashboard
+    </a>
+</div>
+
+<p>
+    <strong>Date:</strong> {{ today }}
+</p>
+
+<table class="table table-striped table-bordered">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for t in transactions %}
+
+        <tr>
+            <td>{{ t.id }}</td>
+            <td>{{ t.transaction_type }}</td>
+            <td>₹ {{ t.amount }}</td>
+            <td>{{ t.status }}</td>
+        </tr>
+
+        {% empty %}
+
+        <tr>
+            <td colspan="4" class="text-center">
+                No transactions found today.
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+```
+
+</div>
+
+{% endblock %}

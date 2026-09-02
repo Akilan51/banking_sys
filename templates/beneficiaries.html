@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Beneficiaries</h2>
+
+<a
+href="{% url 'add_beneficiary' %}"
+class="btn btn-primary">
+
+Add Beneficiary
+
+</a>
+
+<br><br>
+
+<table class="table">
+
+<tr>
+
+<th>Name</th>
+
+<th>Account</th>
+
+<th>IFSC</th>
+
+</tr>
+
+{% for b in beneficiaries %}
+
+<tr>
+
+<td>{{ b.beneficiary_name }}</td>
+
+<td>{{ b.beneficiary_account }}</td>
+
+<td>{{ b.beneficiary_ifsc }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

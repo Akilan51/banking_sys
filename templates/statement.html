@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Account Statement</h2>
+
+<form method="get" class="row mb-3">
+
+<div class="col-md-4">
+<input type="date"
+name="start"
+class="form-control">
+</div>
+
+<div class="col-md-4">
+<input type="date"
+name="end"
+class="form-control">
+</div>
+
+<div class="col-md-4">
+<button class="btn btn-primary">
+Filter
+</button>
+</div>
+
+</form>
+
+<a href="{% url 'statement_pdf' %}"
+class="btn btn-success">
+
+Download PDF
+
+</a>
+
+<button
+onclick="window.print()"
+class="btn btn-secondary">
+
+Print
+
+</button>
+
+<hr>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>Date</th>
+
+<th>Type</th>
+
+<th>Amount</th>
+
+<th>Status</th>
+
+</tr>
+
+{% for t in transactions %}
+
+<tr>
+
+<td>{{ t.date }}</td>
+
+<td>{{ t.transaction_type }}</td>
+
+<td>₹ {{ t.amount }}</td>
+
+<td>{{ t.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

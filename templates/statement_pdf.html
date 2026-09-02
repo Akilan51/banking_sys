@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<style>
+    table{
+        width:100%;
+        border-collapse:collapse;
+    }
+ 
+    table,th,td{
+        border:1px solid black;
+        padding:8px;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Bank Statement</h2>
+
+<p>
+
+Account Number :
+
+{{ account.account_number }}
+
+</p>
+
+<table>
+
+<tr>
+
+<th>Date</th>
+
+<th>Type</th>
+
+<th>Amount</th>
+
+<th>Status</th>
+
+</tr>
+
+{% for t in transactions %}
+
+<tr>
+
+<td>{{ t.date }}</td>
+
+<td>{{ t.transaction_type }}</td>
+
+<td>{{ t.amount }}</td>
+
+<td>{{ t.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+
+</html>

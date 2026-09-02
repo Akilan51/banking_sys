@@ -1,0 +1,552 @@
+
+/* =========================================
+   TRANSACTION STATEMENT ANIMATION
+   ========================================= */
+
+.statement-page {
+    min-height: 75vh;
+    padding: 45px 20px;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(13, 110, 253, 0.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(111, 66, 193, 0.12),
+            transparent 30%
+        );
+}
+
+
+/* =========================================
+   STATEMENT CARD
+   ========================================= */
+
+.statement-card {
+    max-width: 1100px;
+    margin: auto;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.12);
+
+    animation: statementEnter 0.8s ease-out;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.statement-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 30px 75px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.statement-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 28px 32px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd,
+            #6610f2
+        );
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Moving shine */
+
+.statement-header::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    animation: headerShine 4s infinite;
+}
+
+
+.statement-icon {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    font-size: 30px;
+
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+
+.statement-header h2 {
+    margin: 0;
+
+    font-weight: 700;
+
+    animation: titleAppear 0.7s ease-out;
+}
+
+
+.statement-header p {
+    margin: 5px 0 0;
+
+    opacity: 0.85;
+}
+
+
+/* =========================================
+   TABLE
+   ========================================= */
+
+.table-container {
+    overflow-x: auto;
+}
+
+
+.statement-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+.statement-table thead {
+    background: #f1f4f9;
+}
+
+
+.statement-table th {
+    padding: 17px 20px;
+
+    text-align: left;
+
+    font-size: 14px;
+
+    color: #495057;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+
+.statement-table td {
+    padding: 18px 20px;
+
+    border-top: 1px solid #edf0f4;
+
+    color: #343a40;
+}
+
+
+/* Row animation */
+
+.statement-table tbody tr {
+    opacity: 0;
+
+    animation: rowAppear 0.6s ease forwards;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.statement-table tbody tr:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.statement-table tbody tr:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.statement-table tbody tr:nth-child(3) {
+    animation-delay: 0.35s;
+}
+
+.statement-table tbody tr:nth-child(4) {
+    animation-delay: 0.45s;
+}
+
+.statement-table tbody tr:nth-child(5) {
+    animation-delay: 0.55s;
+}
+
+.statement-table tbody tr:nth-child(6) {
+    animation-delay: 0.65s;
+}
+
+
+.statement-table tbody tr:hover {
+    background: #f8faff;
+
+    transform: translateX(5px);
+}
+
+
+/* =========================================
+   TRANSACTION TYPE
+   ========================================= */
+
+.transaction-type {
+    display: inline-block;
+
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    background: #eef4ff;
+
+    color: #0d6efd;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+
+.transaction-type:hover {
+    transform: scale(1.08);
+}
+
+
+/* =========================================
+   AMOUNT
+   ========================================= */
+
+.amount {
+    font-weight: 700;
+
+    color: #198754;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   STATUS
+   ========================================= */
+
+.status {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    background: #e9ecef;
+}
+
+
+.status.success {
+    color: #146c43;
+    background: #d1e7dd;
+
+    animation: statusPulse 2s infinite;
+}
+
+
+.status.pending {
+    color: #997404;
+    background: #fff3cd;
+}
+
+
+.status.failed {
+    color: #b02a37;
+    background: #f8d7da;
+}
+
+
+/* =========================================
+   EMPTY MESSAGE
+   ========================================= */
+
+.empty-message {
+    text-align: center;
+
+    padding: 55px !important;
+
+    color: #6c757d;
+
+    font-size: 17px;
+}
+
+
+/* =========================================
+   NO ACCOUNT
+   ========================================= */
+
+.no-account-card {
+    max-width: 500px;
+
+    margin: 70px auto;
+
+    padding: 45px 35px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.12);
+
+    animation: statementEnter 0.8s ease-out;
+}
+
+
+.no-account-icon {
+    font-size: 65px;
+
+    margin-bottom: 15px;
+
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+
+.no-account-card h2 {
+    margin-bottom: 10px;
+}
+
+
+.no-account-card p {
+    color: #6c757d;
+
+    margin-bottom: 25px;
+}
+
+
+.create-account-btn {
+    display: inline-block;
+
+    padding: 12px 25px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 12px;
+
+    font-weight: 600;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd,
+            #6610f2
+        );
+
+    transition: all 0.3s ease;
+}
+
+
+.create-account-btn:hover {
+    color: white;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 30px rgba(13, 110, 253, 0.3);
+}
+
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes statementEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(45px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+@keyframes titleAppear {
+
+    from {
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+
+}
+
+
+@keyframes headerShine {
+
+    0% {
+        left: -120%;
+    }
+
+    45%,
+    100% {
+        left: 130%;
+    }
+
+}
+
+
+@keyframes rowAppear {
+
+    from {
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.15);
+    }
+
+    50% {
+        box-shadow: 0 0 0 7px rgba(25, 135, 84, 0);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .statement-page {
+        padding: 25px 12px;
+    }
+
+    .statement-header {
+        padding: 22px;
+    }
+
+    .statement-header h2 {
+        font-size: 20px;
+    }
+
+    .statement-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 25px;
+    }
+
+    .statement-table th,
+    .statement-table td {
+        padding: 14px 12px;
+        white-space: nowrap;
+    }
+
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .statement-card,
+    .statement-table tbody tr,
+    .statement-icon,
+    .statement-header::after,
+    .status.success {
+        animation: none;
+    }
+
+    .statement-card,
+    .statement-table tbody tr,
+    .transaction-type,
+    .create-account-btn {
+        transition: none;
+    }
+
+}

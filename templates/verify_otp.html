@@ -1,0 +1,85 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+Verify OTP
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/verify_otp.css' %}">
+
+<div class="row justify-content-center">
+
+    <div class="col-md-5">
+
+        <div class="card shadow-lg border-0">
+
+            <div class="card-body p-4">
+
+                <h3 class="text-center mb-4">
+                    🔐 Verify OTP
+                </h3>
+
+                {% if messages %}
+
+                    {% for message in messages %}
+
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+                <form method="post">
+
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+
+                        <label
+                            for="otp"
+                            class="form-label">
+
+                            Enter OTP
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="otp"
+                            name="otp"
+                            class="form-control"
+                            maxlength="6"
+                            minlength="6"
+                            inputmode="numeric"
+                            autocomplete="one-time-code"
+                            placeholder="Enter 6-digit OTP"
+                            required
+                        >
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary w-100">
+
+                        Verify OTP
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

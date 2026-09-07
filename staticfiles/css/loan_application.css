@@ -1,0 +1,765 @@
+
+/* =====================================================
+   LOAN APPLICATION
+   Premium Animated Banking UI
+   ===================================================== */
+
+.loan-application-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px !important;
+    background: rgba(255, 255, 255, 0.96);
+    transform: translateY(35px);
+    opacity: 0;
+
+    animation: loanCardEnter 0.9s cubic-bezier(.16, 1, .3, 1)
+               forwards;
+
+    box-shadow:
+        0 25px 70px rgba(20, 40, 80, 0.18) !important;
+}
+
+
+/* =====================================================
+   ANIMATED PAGE BACKGROUND
+   ===================================================== */
+
+.loan-application-card::before {
+    content: "";
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    top: -130px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        rgba(13, 110, 253, 0.15),
+        rgba(111, 66, 193, 0.12)
+    );
+
+    animation: orbitGlow 7s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.loan-application-card .card-header {
+    position: relative;
+    overflow: hidden;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0759d7,
+            #1646a0,
+            #512da8
+        ) !important;
+
+    background-size: 200% 200%;
+
+    animation: gradientMove 6s ease infinite;
+}
+
+
+/* Header light sweep */
+
+.loan-application-card .card-header::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    transform: skewX(-25deg);
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.22),
+        transparent
+    );
+
+    animation: headerSweep 5s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   LOAN ICON
+   ===================================================== */
+
+.loan-icon {
+    width: 68px;
+    height: 68px;
+
+    margin: 0 auto 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 32px;
+
+    background: rgba(255,255,255,0.16);
+
+    border: 1px solid rgba(255,255,255,0.28);
+
+    box-shadow:
+        0 0 0 0 rgba(255,255,255,0.25);
+
+    animation:
+        iconAppear 0.8s ease 0.3s both,
+        iconPulse 3s ease-in-out 1.2s infinite;
+}
+
+
+/* =====================================================
+   HEADER TEXT
+   ===================================================== */
+
+.loan-application-card .card-header h2 {
+    position: relative;
+    z-index: 2;
+
+    font-weight: 700;
+    letter-spacing: -0.4px;
+
+    animation: textReveal 0.8s ease 0.4s both;
+}
+
+
+.loan-application-card .card-header p {
+    position: relative;
+    z-index: 2;
+
+    opacity: 0.88;
+
+    animation: textReveal 0.8s ease 0.55s both;
+}
+
+
+/* =====================================================
+   FORM AREA
+   ===================================================== */
+
+.loan-application-card .card-body {
+    position: relative;
+}
+
+
+/* =====================================================
+   FORM FIELDS
+   ===================================================== */
+
+.loan-application-card form > div.mb-3 {
+    opacity: 0;
+    transform: translateX(-20px);
+
+    animation: fieldEnter 0.55s ease forwards;
+}
+
+
+/* Staggered field animation */
+
+.loan-application-card form > div.mb-3:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.loan-application-card form > div.mb-3:nth-child(3) {
+    animation-delay: 0.35s;
+}
+
+.loan-application-card form > div.mb-3:nth-child(4) {
+    animation-delay: 0.45s;
+}
+
+.loan-application-card form > div.mb-3:nth-child(5) {
+    animation-delay: 0.55s;
+}
+
+.loan-application-card form > div.mb-3:nth-child(6) {
+    animation-delay: 0.65s;
+}
+
+.loan-application-card form > div.mb-3:nth-child(7) {
+    animation-delay: 0.75s;
+}
+
+.loan-application-card form > div.mb-3:nth-child(8) {
+    animation-delay: 0.85s;
+}
+
+
+/* =====================================================
+   LABELS
+   ===================================================== */
+
+.loan-application-card .form-label {
+    color: #253858;
+
+    font-size: 14px;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* =====================================================
+   INPUTS
+   ===================================================== */
+
+.loan-application-card input,
+.loan-application-card select,
+.loan-application-card textarea {
+
+    width: 100%;
+
+    border: 1px solid #dce3ec;
+
+    border-radius: 12px;
+
+    padding: 12px 14px;
+
+    background: #f8fafc;
+
+    color: #1e293b;
+
+    outline: none;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* Focus effect */
+
+.loan-application-card input:focus,
+.loan-application-card select:focus,
+.loan-application-card textarea:focus {
+
+    background: #ffffff;
+
+    border-color: #1769e0;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 0 4px rgba(23,105,224,0.10),
+        0 8px 20px rgba(23,105,224,0.08);
+}
+
+
+/* Label reacts visually */
+
+.loan-application-card input:focus ~ label,
+.loan-application-card select:focus ~ label,
+.loan-application-card textarea:focus ~ label {
+    color: #1769e0;
+}
+
+
+/* =====================================================
+   HELP TEXT
+   ===================================================== */
+
+.loan-application-card .form-text {
+    margin-top: 6px;
+
+    color: #7a8798;
+
+    font-size: 12px;
+
+    animation: fadeIn 0.5s ease;
+}
+
+
+/* =====================================================
+   ERROR ANIMATION
+   ===================================================== */
+
+.loan-application-card .text-danger {
+    animation: errorShake 0.45s ease;
+}
+
+
+/* Non-field errors */
+
+.loan-application-card .alert-danger {
+    border: none;
+    border-radius: 12px;
+
+    animation:
+        alertAppear 0.5s ease,
+        errorShake 0.45s ease 0.5s;
+}
+
+
+/* =====================================================
+   BUTTON AREA
+   ===================================================== */
+
+.loan-application-card .d-flex {
+    opacity: 0;
+
+    animation:
+        buttonAreaEnter 0.7s ease 0.8s forwards;
+}
+
+
+/* =====================================================
+   APPLY BUTTON
+   ===================================================== */
+
+.loan-application-card .btn-primary {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0759d7,
+            #1769e0,
+            #512da8
+        );
+
+    background-size: 200% 200%;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 8px 20px rgba(23,105,224,0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    animation: buttonGradient 5s ease infinite;
+}
+
+
+/* Button shine */
+
+.loan-application-card .btn-primary::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    transform: skewX(-25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.35),
+            transparent
+        );
+
+    transition: left 0.6s ease;
+}
+
+
+.loan-application-card .btn-primary:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.02);
+
+    box-shadow:
+        0 14px 30px rgba(23,105,224,0.35);
+}
+
+
+.loan-application-card .btn-primary:hover::before {
+    left: 140%;
+}
+
+
+.loan-application-card .btn-primary:active {
+
+    transform:
+        translateY(0)
+        scale(0.97);
+}
+
+
+/* =====================================================
+   CANCEL BUTTON
+   ===================================================== */
+
+.loan-application-card .btn-outline-secondary {
+
+    border-radius: 12px;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+
+.loan-application-card .btn-outline-secondary:hover {
+
+    transform: translateY(-3px);
+
+    background: #475569;
+
+    color: white;
+
+    border-color: #475569;
+}
+
+
+/* =====================================================
+   INFORMATION BOX
+   ===================================================== */
+
+.loan-application-card + .alert-info {
+
+    border: none;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e9f5ff,
+            #f0f7ff
+        );
+
+    color: #24527a;
+
+    box-shadow:
+        0 10px 30px rgba(40,90,130,0.08);
+
+    animation:
+        infoAppear 0.8s ease 1s both;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.loan-application-card + .alert-info:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(40,90,130,0.13);
+}
+
+
+/* =====================================================
+   KEYFRAMES
+   ===================================================== */
+
+@keyframes loanCardEnter {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateY(45px)
+            scale(0.94);
+    }
+
+    70% {
+        opacity: 1;
+        transform:
+            translateY(-5px)
+            scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes gradientMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+@keyframes buttonGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+@keyframes headerSweep {
+
+    0% {
+        left: -120%;
+    }
+
+    35% {
+        left: 140%;
+    }
+
+    100% {
+        left: 140%;
+    }
+}
+
+
+@keyframes orbitGlow {
+
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-70px, 80px)
+            scale(1.2);
+    }
+}
+
+
+@keyframes iconAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            scale(0.4)
+            rotate(-20deg);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            scale(1)
+            rotate(0);
+    }
+}
+
+
+@keyframes iconPulse {
+
+    0%, 100% {
+        box-shadow:
+            0 0 0 0 rgba(255,255,255,0.20);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 12px rgba(255,255,255,0);
+    }
+}
+
+
+@keyframes textReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fieldEnter {
+
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes buttonAreaEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes alertAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes infoAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes errorShake {
+
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-6px);
+    }
+
+    50% {
+        transform: translateX(6px);
+    }
+
+    75% {
+        transform: translateX(-4px);
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    .loan-application-card {
+        border-radius: 18px !important;
+    }
+
+    .loan-application-card .card-header {
+        padding: 28px 20px !important;
+    }
+
+    .loan-application-card .card-body {
+        padding: 28px 20px !important;
+    }
+
+    .loan-icon {
+        width: 58px;
+        height: 58px;
+        font-size: 27px;
+    }
+
+    .loan-application-card .card-header h2 {
+        font-size: 25px;
+    }
+
+    .loan-application-card .d-flex {
+        flex-direction: column;
+    }
+
+    .loan-application-card .d-flex .btn {
+        width: 100%;
+    }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

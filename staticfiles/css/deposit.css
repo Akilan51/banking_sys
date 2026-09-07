@@ -1,0 +1,450 @@
+
+/* =========================================
+   DEPOSIT PAGE - UNIQUE ANIMATION THEME
+   ========================================= */
+
+.deposit-page {
+    min-height: 82vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    position: relative;
+    overflow: hidden;
+    background: #07111f;
+}
+
+
+/* ---------- Animated Background ---------- */
+
+.deposit-page::before,
+.deposit-page::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(5px);
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.deposit-page::before {
+    width: 320px;
+    height: 320px;
+    background: #1769aa;
+    top: -120px;
+    left: -100px;
+    animation: floatOrb 7s ease-in-out infinite;
+}
+
+.deposit-page::after {
+    width: 280px;
+    height: 280px;
+    background: #00b894;
+    right: -90px;
+    bottom: -110px;
+    animation: floatOrbReverse 8s ease-in-out infinite;
+}
+
+
+/* ---------- Floating Card ---------- */
+
+.deposit-card {
+    width: 100%;
+    max-width: 470px;
+    padding: 40px;
+    position: relative;
+    z-index: 2;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 26px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+    animation: cardEntrance 0.9s cubic-bezier(.17,.67,.32,1.3),
+               cardFloat 5s ease-in-out 1s infinite;
+}
+
+
+/* ---------- Card Shine ---------- */
+
+.deposit-card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 500px;
+
+    top: -100px;
+    left: -250px;
+
+    transform: rotate(25deg);
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.15),
+        transparent
+    );
+
+    animation: cardShine 5s ease-in-out infinite;
+}
+
+
+/* ---------- Heading ---------- */
+
+.deposit-card h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 31px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+
+    animation: titleReveal 0.8s ease forwards;
+}
+
+.deposit-card .subtitle {
+    margin: 9px 0 30px;
+    color: #aebdce;
+    font-size: 14px;
+
+    animation: titleReveal 1s ease forwards;
+}
+
+
+/* ---------- Form ---------- */
+
+.deposit-card form {
+    animation: formReveal 1s ease 0.15s both;
+}
+
+.deposit-card p {
+    margin-bottom: 20px;
+}
+
+
+/* ---------- Labels ---------- */
+
+.deposit-card label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #dce8f5;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* ---------- Inputs ---------- */
+
+.deposit-card input,
+.deposit-card select,
+.deposit-card textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 14px 16px;
+
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 13px;
+
+    outline: none;
+
+    background: rgba(255,255,255,0.07);
+    color: #ffffff;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* Input Placeholder */
+
+.deposit-card input::placeholder {
+    color: #8798aa;
+}
+
+
+/* Input Focus Animation */
+
+.deposit-card input:focus,
+.deposit-card select:focus,
+.deposit-card textarea:focus {
+
+    border-color: #35d6b4;
+
+    background: rgba(255,255,255,0.11);
+
+    box-shadow:
+        0 0 0 3px rgba(53,214,180,0.12),
+        0 8px 25px rgba(0,0,0,0.12);
+
+    transform: translateY(-2px);
+}
+
+
+/* ---------- Deposit Button ---------- */
+
+.deposit-btn {
+    width: 100%;
+    margin-top: 10px;
+
+    padding: 15px 20px;
+
+    border: none;
+    border-radius: 13px;
+
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #00b894,
+        #0984e3
+    );
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(0,184,148,0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* Button Shine */
+
+.deposit-btn::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    transform: skewX(-25deg);
+
+    background: rgba(255,255,255,0.25);
+
+    transition: left 0.6s ease;
+}
+
+
+/* Button Hover */
+
+.deposit-btn:hover {
+    transform: translateY(-3px) scale(1.01);
+
+    box-shadow:
+        0 15px 35px rgba(0,184,148,0.35);
+}
+
+.deposit-btn:hover::before {
+    left: 140%;
+}
+
+
+/* Button Click */
+
+.deposit-btn:active {
+    transform: scale(0.97);
+}
+
+
+/* ---------- Error Messages ---------- */
+
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 10px;
+
+    color: #ff7675;
+
+    font-size: 13px;
+
+    animation: errorShake 0.4s ease;
+}
+
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes cardEntrance {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(60px)
+            scale(0.88)
+            rotateX(8deg);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1)
+            rotateX(0);
+    }
+}
+
+
+@keyframes cardFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+@keyframes floatOrb {
+
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(80px, 50px)
+            scale(1.15);
+    }
+}
+
+
+@keyframes floatOrbReverse {
+
+    0%, 100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-70px, -40px)
+            scale(1.12);
+    }
+}
+
+
+@keyframes cardShine {
+
+    0% {
+        left: -250px;
+    }
+
+    35%, 100% {
+        left: 650px;
+    }
+}
+
+
+@keyframes titleReveal {
+
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes formReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes errorShake {
+
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-6px);
+    }
+
+    75% {
+        transform: translateX(6px);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .deposit-page {
+        min-height: 75vh;
+        padding: 30px 15px;
+    }
+
+    .deposit-card {
+        padding: 28px 22px;
+        border-radius: 20px;
+    }
+
+    .deposit-card h2 {
+        font-size: 26px;
+    }
+
+    .deposit-btn {
+        padding: 14px;
+    }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

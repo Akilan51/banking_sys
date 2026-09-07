@@ -9,4 +9,3 @@ qrcode
 xhtml2pdf
 gunicorn
 whitenoise
-dj-database-url
